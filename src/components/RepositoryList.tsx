@@ -1,7 +1,7 @@
+import { useState, useEffect } from "react";
 import { RepositoryItem } from "./RepositoryItem";
 
 import "../styles/repositories.scss";
-import { useState, useEffect } from "react";
 
 interface Repository {
   name: string;
@@ -9,14 +9,14 @@ interface Repository {
   html_url: string;
 }
 
-export function RepositoryList () {
+export function RepositoryList() {
 const [repositories, setRepositories] = useState<Repository[]>([]);
 
 useEffect(() => {
   fetch('https://api.github.com/orgs/rocketseat/repos')
   .then(response => response.json())
   .then(data => setRepositories(data))
-}, [])
+}, []);
 
   return (
     <section className="repository-list">
